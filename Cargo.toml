@@ -1,0 +1,18 @@
+[package]
+name = "sshp-rs"
+version = "0.0.1"
+edition = "2021"
+description = "Parallel SSH Executor - Rust Port"
+license = "MIT"
+repository = "https://github.com/bahamas10/sshp"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+openssh = "0.11"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1.0"
+futures = "0.3"
+
+[[bin]]
+name = "sshp-rs"
+path = "src/main.rs"
