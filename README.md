@@ -1,5 +1,3 @@
-![sshp-logo](https://www.daveeddy.com/static/media/github/sshp/c/logo.jpg)
-
 `sshp` - Parallel SSH Executor (Rust Port)
 ==========================================
 
@@ -77,13 +75,13 @@ server3.example.com
 Run a command on all hosts:
 
 ```console
-$ sshp -f hosts.txt uname -a
+sshp -f hosts.txt uname -a
 ```
 
 Or read hosts from stdin:
 
 ```console
-$ cat hosts.txt | sshp uname -a
+cat hosts.txt | sshp uname -a
 ```
 
 ### Limit Concurrency
@@ -91,7 +89,7 @@ $ cat hosts.txt | sshp uname -a
 Run on max 5 hosts at a time:
 
 ```console
-$ sshp -f hosts.txt -m 5 uptime
+sshp -f hosts.txt -m 5 uptime
 ```
 
 ### With SSH Options
@@ -99,7 +97,7 @@ $ sshp -f hosts.txt -m 5 uptime
 Specify username and identity file:
 
 ```console
-$ sshp -f hosts.txt -l admin -i ~/.ssh/id_rsa df -h
+sshp -f hosts.txt -l admin -i ~/.ssh/id_rsa df -h
 ```
 
 ### Timeouts
@@ -107,7 +105,7 @@ $ sshp -f hosts.txt -l admin -i ~/.ssh/id_rsa df -h
 Set connection timeout (default: 30s) and command timeout (default: 300s):
 
 ```console
-$ sshp -f hosts.txt --connect-timeout 10 --command-timeout 60 hostname
+sshp -f hosts.txt --connect-timeout 10 --command-timeout 60 hostname
 ```
 
 Exit Codes
@@ -197,7 +195,7 @@ Host *.example.com
 To suppress status messages, redirect stderr:
 
 ```console
-$ sshp -f hosts.txt hostname 2>/dev/null
+sshp -f hosts.txt hostname 2>/dev/null
 ```
 
 ### Exit Status
@@ -218,7 +216,7 @@ Performance
 -----------
 
 The Rust implementation uses Tokio's async runtime with a semaphore to limit
-concurrency. This is more efficient than the C implementation's fork/exec 
+concurrency. This is more efficient than the C implementation's fork/exec
 approach because:
 
 1. **Less memory** - No process overhead for each SSH connection
@@ -226,6 +224,7 @@ approach because:
 3. **Safer** - Rust's memory safety prevents common C bugs
 
 Benchmark on 100 hosts with `-m 50`:
+
 - C version: ~2.1s
 - Rust version: ~1.8s
 
@@ -235,19 +234,19 @@ Development
 ### Building
 
 ```console
-$ cargo build --release
+cargo build --release
 ```
 
 ### Testing
 
 ```console
-$ cargo test
+cargo test
 ```
 
 ### Linting
 
 ```console
-$ cargo clippy --all-targets --all-features -- -D warnings
+cargo clippy --all-targets --all-features -- -D warnings
 ```
 
 License
@@ -260,4 +259,4 @@ See [LICENSE](../LICENSE) file for details.
 ---
 
 This is a Rust port of the original C implementation by Dave Eddy.
-Original: https://github.com/bahamas10/sshp
+Original: <https://github.com/bahamas10/sshp>
